@@ -14,7 +14,7 @@ export const StyledSearchIconHolder = styled.div`
     top: 0px;
     right: 0px;
 `;
-export const StyledBox = styled.div`
+export const StyledBox = styled.div<any, any>`
 `;
 export const StyledFlexBox = styled.div`
 display: flex
@@ -27,7 +27,7 @@ border-radius: 8px;
 background: rgba(245, 246, 250, 1); 
 `;
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.button<any, any>`
 min-width: 250px;
 padding: 0.6em 1em;
 border-radius: 8px;

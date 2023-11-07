@@ -2,10 +2,13 @@ import React, { FC } from 'react';
 import { SidebarWrapper, StyledLogo } from './Sidebar.styled';
 import { CenterStyle, StyledBox, StyledImg, StyledListItems, StyledNavItems, StyledTextRegular, StyledUList } from '../CommonUi/CommonUi.styled';
 import { BgIcon, CgIcon, CugIcon, LogIcon, MgIcon, PagIcon, PgIcon, SgIcon } from '../../assets';
+import { useNavigate } from 'react-router-dom';
 
 interface SidebarProps { }
 
-const Sidebar: FC<SidebarProps> = () => (
+const Sidebar: FC<SidebarProps> = () => {
+   const navigate = useNavigate()
+   return (
    <SidebarWrapper data-testid="Sidebar">
       <StyledBox className='py-5 my-5'>
 
@@ -48,6 +51,15 @@ const Sidebar: FC<SidebarProps> = () => (
                </StyledBox>
                <span style={{ display: 'inline-block', verticalAlign: 'bottom', marginLeft: '1em' }}>
                   Calendar
+               </span>
+
+            </StyledNavItems></StyledListItems>
+            <StyledListItems onClick={() => navigate('/login')}><StyledNavItems href='#'>
+               <StyledBox  style={{ width: '20px', borderRadius: '6px', verticalAlign: 'middle', display: 'inline-block' }}>
+                  <StyledImg src={SgIcon} />
+               </StyledBox>
+               <span style={{ display: 'inline-block', verticalAlign: 'bottom', marginLeft: '1em' }}>
+                  Logout
                </span>
 
             </StyledNavItems></StyledListItems>
@@ -128,6 +140,6 @@ const Sidebar: FC<SidebarProps> = () => (
          </StyledUList>
       </StyledBox>
    </SidebarWrapper>
-);
+)};
 
 export default Sidebar;
