@@ -1,6 +1,6 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useLayoutEffect } from 'react';
 import { DashboardWrapper } from './Dashboard.styled';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar/Sidebar.lazy';
 import { StyledFlexBox } from '../../components/CommonUi/CommonUi.styled';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -10,13 +10,15 @@ interface DashboardProps { }
 
 const Dashboard: FC<DashboardProps> = () => {
 
-   const [authUser, setAuthUser] = useState<any>(null)
+   const [authUser, setAuthUser] = useState<any>(null);
+   const navigate = useNavigate()
 
-useEffect(() => {
+useLayoutEffect(() => {
    const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
          setAuthUser(user)
       }else {
+         navigate('/login')
          setAuthUser(null)
       }
 
